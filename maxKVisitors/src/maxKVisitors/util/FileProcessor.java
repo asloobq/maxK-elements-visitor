@@ -25,9 +25,14 @@ public class FileProcessor implements FileProcessorI {
       @return returns the next number from the file
     */
     public int nextInt() throws IOException {
-       int result = 0;
+       Integer result = null;
        String line = mReader.readLine();
-       result = Integer.parseInt(line);
+       try {
+           result = Integer.parseInt(line);
+       } catch (NumberFormatException e) {
+           System.err.println("Invalid number string");
+           System.exit(1);
+       }
        return result;
     }
 

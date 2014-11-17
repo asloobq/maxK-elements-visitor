@@ -7,6 +7,7 @@ import maxKVisitors.util.FileProcessor;
 
 import maxKVisitors.util.MyVector;
 import maxKVisitors.util.MyArray;
+import maxKVisitors.util.PopulateVisitor;
 import maxKVisitors.util.MaxHeapVisitor;
 import maxKVisitors.util.ModifiedBubbleSortVisitor;
 import maxKVisitors.util.Visiting;
@@ -16,7 +17,9 @@ public class Driver {
 
     public static void main(String args[]) {
         FileProcessorI fp = new FileProcessor("");
+        Visitor populateVisitor = null; 
         try {
+            populateVisitor = new PopulateVisitor(fp);
             fp.nextInt();
         } catch (IOException e) {
             e.printStackTrace();
@@ -27,7 +30,11 @@ public class Driver {
 
         Visitor maxHeapVisitor = new MaxHeapVisitor();
         Visitor bubbleSortVisitor = new ModifiedBubbleSortVisitor();
-        
+         
+        //build the two ADTs
+        vector.accept(populateVisitor);
+        array.accept(populateVisitor);
+
         vector.accept(maxHeapVisitor);
         array.accept(maxHeapVisitor);
 
