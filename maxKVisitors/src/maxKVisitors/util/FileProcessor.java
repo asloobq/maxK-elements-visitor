@@ -18,22 +18,31 @@ public class FileProcessor implements FileProcessorI {
                 e.printStackTrace();
                 System.exit(1);
         } finally {}
-       
     }
 
     /* 
       @return returns the next number from the file
     */
-    public int nextInt() throws IOException {
-       Integer result = null;
-       String line = mReader.readLine();
-       try {
+    public Integer nextInt() {
+        Integer result = null;
+        String line = "";
+        try {
+            line = mReader.readLine();
+            if( line == null){
+                return null;
+            }
+            System.out.println(line);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        try {
            result = Integer.parseInt(line);
        } catch (NumberFormatException e) {
-           System.err.println("Invalid number string");
+           System.err.println("Invalid number string : " + line);
+           e.printStackTrace();
            System.exit(1);
        }
        return result;
     }
-
 }

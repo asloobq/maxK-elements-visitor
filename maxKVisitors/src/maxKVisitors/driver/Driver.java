@@ -16,22 +16,30 @@ import maxKVisitors.util.Visitor;
 public class Driver {
 
     public static void main(String args[]) {
-        FileProcessorI fp = new FileProcessor("");
-        Visitor populateVisitor = null; 
-        try {
-            populateVisitor = new PopulateVisitor(fp);
-            fp.nextInt();
-        } catch (IOException e) {
+        if( args.length != 2){
+            System.err.println("Please enter only 2 arguments <filename> <k>");
+            System.exit(1);
+        }
+
+        int k = 0;
+        try{
+            k = Integer.parseInt( args[0]);
+        }catch (Exception e){
             e.printStackTrace();
         }
+
+        FileProcessorI fp = new FileProcessor(args[1]);
+        Visitor populateVisitor = null;
+        populateVisitor = new PopulateVisitor(fp, new FileProcessor(args[1]));
+//        fp.nextInt();
 
         Visiting vector = new MyVector();
         Visiting array = new MyArray();
 
-        Visitor maxHeapVisitor = new MaxHeapVisitor();
-        Visitor bubbleSortVisitor = new ModifiedBubbleSortVisitor();
+        Visitor maxHeapVisitor = new MaxHeapVisitor(k);
+        Visitor bubbleSortVisitor = new ModifiedBubbleSortVisitor(k);
          
-        //build the two ADTs
+        //todo build the two ADTs
         vector.accept(populateVisitor);
         array.accept(populateVisitor);
 

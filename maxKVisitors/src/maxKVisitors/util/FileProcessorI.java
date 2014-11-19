@@ -8,5 +8,5 @@ public interface FileProcessorI {
     /* 
       @return returns the next number from the file
     */
-    public int nextInt() throws IOException;
+    public Integer nextInt();
 }

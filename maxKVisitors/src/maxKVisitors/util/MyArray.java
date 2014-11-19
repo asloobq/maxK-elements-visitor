@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class MyArray implements Visiting {
 
-    ArrayList<Integer> mArray;
+    private ArrayList<Integer> mArray;
 
     public MyArray() {
        mArray = new ArrayList<Integer>();
@@ -18,4 +18,7 @@ public class MyArray implements Visiting {
        mArray.add(elem);
    }
 
+    public ArrayList<Integer>getmArray(){
+        return mArray;
+    }
 }

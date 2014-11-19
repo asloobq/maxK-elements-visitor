@@ -4,7 +4,7 @@ import java.util.Vector;
 
 public class MyVector implements Visiting {
 
-   Vector<Integer> mVector;
+   private Vector<Integer> mVector;
 
    public MyVector() {
        mVector = new Vector<Integer>();
@@ -18,4 +18,7 @@ public class MyVector implements Visiting {
         mVector.add(elem);
    }
 
+    public Vector<Integer> getMyVector(){
+        return mVector;
+    }
 }

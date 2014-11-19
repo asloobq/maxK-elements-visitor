@@ -48,12 +48,10 @@
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/maxKVisitors.jar"  fork="true">
-	  <arg value="${arg0}"/>
-          <arg value="${arg1}"/>
-          <arg value="${arg2}"/>
-	 </java>
-	
-    </target>
+	    <arg value="${k}"/>
+            <arg value="${filename}"/>
+    	</java>
+</target>
 
 <target name="tarzip"> 
 	<delete file="./maxKVisitors.tar" quiet="true" /> 
