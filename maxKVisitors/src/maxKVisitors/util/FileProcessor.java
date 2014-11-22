@@ -34,14 +34,16 @@ public class FileProcessor implements FileProcessorI {
             }
             System.out.println(line);
         } catch (IOException e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.err.println("Error reading from file");
             System.exit(1);
         }
+
         try {
            result = Integer.parseInt(line);
        } catch (NumberFormatException e) {
            System.err.println("Invalid number string : " + line);
-           e.printStackTrace();
+           //e.printStackTrace();
            System.exit(1);
        }
        return result;
