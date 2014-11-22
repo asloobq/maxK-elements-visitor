@@ -8,6 +8,7 @@ public class MyVector implements Visiting {
 
    public MyVector() {
        mVector = new Vector<Integer>();
+       Logger.getInstance().write(Logger.LEVEL.LEVEL_CTOR, getClass().getName() + " ctor");
    }
 
    public void accept(Visitor visitor) {

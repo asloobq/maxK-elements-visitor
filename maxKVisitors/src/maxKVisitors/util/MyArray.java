@@ -8,6 +8,7 @@ public class MyArray implements Visiting {
 
     public MyArray() {
        mArray = new ArrayList<Integer>();
+       Logger.getInstance().write(Logger.LEVEL.LEVEL_CTOR, getClass().getName() + " ctor");
     }
 
     public void accept(Visitor visitor) {

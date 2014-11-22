@@ -50,6 +50,7 @@
         <java jar="${BUILD}/jar/maxKVisitors.jar"  fork="true">
 	    <arg value="${k}"/>
             <arg value="${filename}"/>
+            <arg value="${debug}"/>
     	</java>
 </target>
 

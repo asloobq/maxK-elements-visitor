@@ -9,6 +9,7 @@ public class PopulateVisitor implements Visitor {
     public PopulateVisitor(FileProcessorI fileProcessorIn ) { //, FileProcessor fileProcessorIn2) {
         mFileProcessor = fileProcessorIn;
 //        mFileProcessorForArray = fileProcessorIn2;
+        Logger.getInstance().write(Logger.LEVEL.LEVEL_CTOR, "FileProcessor ctor");
     }
 
 //    public void setFile(FileProcessorI fileProcessorIn) {
@@ -16,6 +17,7 @@ public class PopulateVisitor implements Visitor {
 //    }
 
     public void visit(MyVector vector) {
+        Logger.getInstance().write(Logger.LEVEL.LEVEL_VISIT, getClass().getName() + " visit vector");
         Integer input = null;
         try {
             input = mFileProcessor.nextInt();
@@ -30,6 +32,7 @@ public class PopulateVisitor implements Visitor {
     }
 
     public void visit(MyArray array) {
+        Logger.getInstance().write(Logger.LEVEL.LEVEL_VISIT, getClass().getName() + " visit array");
         Integer input = null;
         try {
             input = mFileProcessor.nextInt();

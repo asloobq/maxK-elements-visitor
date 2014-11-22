@@ -12,11 +12,13 @@ import maxKVisitors.util.MaxHeapVisitor;
 import maxKVisitors.util.ModifiedBubbleSortVisitor;
 import maxKVisitors.util.Visiting;
 import maxKVisitors.util.Visitor;
+import maxKVisitors.util.Logger;
+import maxKVisitors.util.Logger.LEVEL;
 
 public class Driver {
 
     public static void main(String args[]) {
-        if( args.length != 2){
+        if( args.length != 3){
             System.err.println("Please enter only 2 arguments <filename> <k>");
             System.exit(1);
         }
@@ -33,6 +35,34 @@ public class Driver {
         if(args[1].equals("")) {
             System.err.println(" filename is empty.");
             System.exit(1);
+        }
+
+        int debugValue = 0;
+        if(args.length == 3) {
+            try {
+                debugValue = Integer.parseInt(args[2]);
+            } catch (NumberFormatException e) {
+                //e.printStackTrace();
+                System.out.println("DEBUG_VALUE is not a number." 
+                + " Range of DEBUG_VALUE is 0 to 2");
+                return;
+            } finally {
+            }
+
+            if(debugValue < 0 || debugValue > 2) {
+                System.out.println("Invalid range. Range of DEBUG_VALUE is 0 to 2");
+                return;
+            }
+
+        }
+        //System.out.println("Debug value = " + debugValue);
+        //System.out.println("Args length = " + args.length);
+        if(debugValue == 0) {
+            Logger.setDebugValue(LEVEL.LEVEL_NONE);
+        } else if(debugValue == 1) {
+            Logger.setDebugValue(LEVEL.LEVEL_CTOR);
+        } else if(debugValue == 2) {
+            Logger.setDebugValue(LEVEL.LEVEL_VISIT);
         }
 
         FileProcessorI fp = new FileProcessor(args[1]);

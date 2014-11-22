@@ -7,10 +7,12 @@ public class MaxHeapVisitor implements Visitor {
     int k = 0;
     public MaxHeapVisitor(int ink) {
         k = ink;
+        Logger.getInstance().write(Logger.LEVEL.LEVEL_CTOR, getClass().getName() + " ctor");
     }
 
     public void visit(MyVector vector) {
         System.out.println("Visiting vector in max-heap");
+        Logger.getInstance().write(Logger.LEVEL.LEVEL_VISIT, getClass().getName() + " visit vector");
         Vector<Integer> myVector = vector.getMyVector();
         checkK( myVector);
 
@@ -23,6 +25,7 @@ public class MaxHeapVisitor implements Visitor {
 
     public void visit(MyArray array) {
         System.out.println("Visiting Array in max-heap");
+        Logger.getInstance().write(Logger.LEVEL.LEVEL_VISIT, getClass().getName() + " visit array");
         Vector<Integer> myVector = new Vector<Integer>(array.getmArray());
         checkK( myVector);
 
