@@ -23,7 +23,7 @@ public class MaxHeapVisitor implements Visitor {
 
     public void visit(MyArray array) {
         System.out.println("Visiting Array in max-heap");
-        Vector<Integer> myVector = new Vector<>(array.getmArray());
+        Vector<Integer> myVector = new Vector<Integer>(array.getmArray());
         checkK( myVector);
 
         int initialSize = myVector.size(), tempK = k;

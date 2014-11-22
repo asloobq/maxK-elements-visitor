@@ -15,7 +15,8 @@ public class FileProcessor implements FileProcessorI {
         try {
             mReader = new BufferedReader(new FileReader(mFilename));
         } catch (FileNotFoundException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                System.err.println("File " + mFilename + "not found");
                 System.exit(1);
         } finally {}
     }

@@ -13,16 +13,19 @@ public class ModifiedBubbleSortVisitor implements Visitor {
     public void visit(MyVector vector) {
         checkK(vector.getMyVector());
         System.out.println("Visiting Vector bubble sort ");
-        List<Integer> list = new ArrayList<>(vector.getMyVector());
-        for( int outer = 0; outer < list.size() ; outer++){
-            for( int inner = 0; inner < list.size()-1; inner++){
-                if( list.get(inner) < list.get(inner+1)){
-                    int temp = list.get(inner+1);
-                    list.set(inner+1, list.get(inner));
+        List<Integer> list = new ArrayList<Integer>(vector.getMyVector());
+        int count = k;
+        for( int outer = list.size()-1; (outer >= 0) && (count > 0); outer--, count--){
+            for( int inner = list.size()-1; inner > 0; inner--){
+
+                if( list.get(inner) > list.get(inner-1)){
+                    int temp = list.get(inner-1);
+                    list.set(inner-1, list.get(inner));
                     list.set(inner, temp);
                 }
             }
         }
+
         for( int i= 0; i< k; i++){
             System.out.println(list.get(i));
         }
@@ -35,11 +38,13 @@ public class ModifiedBubbleSortVisitor implements Visitor {
             k = array.getmArray().size();
         }
         List<Integer> list = array.getmArray();
-        for( int outer = 0; outer < list.size() ; outer++){
-            for( int inner = 0; inner < list.size()-1; inner++){
-                if( list.get(inner) < list.get(inner+1)){
-                    int temp = list.get(inner+1);
-                    list.set(inner+1, list.get(inner));
+        int count = k;
+        for( int outer = list.size()-1; (outer >= 0) && (count > 0) ; outer--, count--){
+            for( int inner = list.size()-1; inner > 0; inner--){
+
+                if( list.get(inner) > list.get(inner - 1)){
+                    int temp = list.get(inner - 1);
+                    list.set(inner - 1, list.get(inner));
                     list.set(inner, temp);
                 }
             }

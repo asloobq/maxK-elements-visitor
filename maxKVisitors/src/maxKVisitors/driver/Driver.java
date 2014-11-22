@@ -25,13 +25,19 @@ public class Driver {
         try{
             k = Integer.parseInt( args[0]);
         }catch (Exception e){
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.err.println("invalid format of K.");
+            System.exit(1);
+        } finally {}
+  
+        if(args[1].equals("")) {
+            System.err.println(" filename is empty.");
+            System.exit(1);
         }
 
         FileProcessorI fp = new FileProcessor(args[1]);
         Visitor populateVisitor = null;
-        populateVisitor = new PopulateVisitor(fp, new FileProcessor(args[1]));
-//        fp.nextInt();
+        populateVisitor = new PopulateVisitor(fp); //, new FileProcessor(args[1]));
 
         Visiting vector = new MyVector();
         Visiting array = new MyArray();
@@ -41,6 +47,9 @@ public class Driver {
          
         //todo build the two ADTs
         vector.accept(populateVisitor);
+
+        fp = new FileProcessor(args[1]);
+        populateVisitor = new PopulateVisitor(fp);
         array.accept(populateVisitor);
 
         vector.accept(maxHeapVisitor);

@@ -4,12 +4,16 @@ import java.io.IOException;
 
 public class PopulateVisitor implements Visitor {
 
-    private FileProcessorI mFileProcessor, mFileProcessorForArray;
+    private FileProcessorI mFileProcessor;//, mFileProcessorForArray;
 
-    public PopulateVisitor(FileProcessorI fileProcessorIn, FileProcessor fileProcessorIn2) {
+    public PopulateVisitor(FileProcessorI fileProcessorIn ) { //, FileProcessor fileProcessorIn2) {
         mFileProcessor = fileProcessorIn;
-        mFileProcessorForArray = fileProcessorIn2;
+//        mFileProcessorForArray = fileProcessorIn2;
     }
+
+//    public void setFile(FileProcessorI fileProcessorIn) {
+//        mFileProcessor = fileProcessorIn;
+//    }
 
     public void visit(MyVector vector) {
         Integer input = null;
@@ -28,10 +32,10 @@ public class PopulateVisitor implements Visitor {
     public void visit(MyArray array) {
         Integer input = null;
         try {
-            input = mFileProcessorForArray.nextInt();
+            input = mFileProcessor.nextInt();
             while(input != null) {
                 array.add(input);
-                input = mFileProcessorForArray.nextInt();
+                input = mFileProcessor.nextInt();
             }
         } catch (Exception e) {
             System.exit(1);
